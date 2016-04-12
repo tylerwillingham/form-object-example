@@ -1,9 +1,11 @@
 Form Objects
 ============
 
-1. `git checkout tags/v1.0`
+1. `git checkout tags/traditional`
 2. `bundle install`
-3. `bin/rake db:create; bin/rake db:migrate`
+3. `bin/rake db:migrate`
+4. `bin/rails s`
+5. Navigate to localhost:3000, observe the beautiful app
 
 
 Details
