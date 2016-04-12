@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :password_confirmation
-  attr_reader :password, :encrypted_password
+  attr_reader :password
 
   belongs_to :company
 
@@ -16,6 +15,6 @@ class User < ActiveRecord::Base
 
   def password=(value)
     @password = value
-    @encrypted_password = 'this-is-so-encrypted'
+    self.encrypted_password = 'this-is-so-encrypted'
   end
 end

@@ -1,0 +1,61 @@
+<%= form_for form, as: :registration, url: registrations_path do |f| %>
+  <div class="errors">
+    <% if form.errors.any? %>
+    <ul>
+      <% form.errors.full_messages.each do |error_message| %>
+      <li><%= error_message %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </div>
+
+  <fieldset>
+    <legend>Company Information</legend>
+
+    <div>
+      <%= f.label :company_name %>
+      <%= f.text_field :company_name %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Your Information</legend>
+    <p>This information is required for billing purposes</p>
+
+    <div>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+    </div>
+
+    <div>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Your sign-in information</legend>
+
+    <div>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.text_field :password %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.text_field :password_confirmation %>
+    </div>
+  </fieldset>
+
+  <input type="submit" value="Register" />
+<% end %>
