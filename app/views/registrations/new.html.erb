@@ -1,2 +1,64 @@
-<h1>Registrations#new</h1>
-<p>Find me in app/views/registrations/new.html.erb</p>
+<div class="container" style="max-width: 600px;margin:0 auto;">
+  <h1>Register</h1>
+
+  <% if @company.errors.any? %>
+    <% @company.errors.full_messages.each do |message| %>
+    <li><%= message %>
+    <% end %>
+  <% end %>
+
+  <%= form_for @company, url: registrations_path do |f| %>
+    <fieldset>
+      <legend>Company Information</legend>
+
+      <div>
+        <%= f.label :name %>
+        <%= f.text_field :name %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your Information</legend>
+      <p>This information is required for billing purposes</p>
+
+      <%= f.fields_for :users, @company.users.first do |user_fields| %>
+      <div>
+        <%= user_fields.label :first_name %>
+        <%= user_fields.text_field :first_name %>
+      </div>
+
+      <div>
+        <%= user_fields.label :last_name %>
+        <%= user_fields.text_field :last_name %>
+      </div>
+
+      <div>
+        <%= user_fields.label :email %>
+        <%= user_fields.text_field :email %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>Your sign-in information</legend>
+
+      <div>
+        <%= user_fields.label :username %>
+        <%= user_fields.text_field :username %>
+      </div>
+
+      <div>
+        <%= user_fields.label :password %>
+        <%= user_fields.text_field :password %>
+      </div>
+
+      <div>
+        <%= user_fields.label :password_confirmation %>
+        <%= user_fields.text_field :password_confirmation %>
+      </div>
+      <% end %>
+    </fieldset>
+
+    <input type="submit" value="Register" />
+  <% end %>
+</div>
+
